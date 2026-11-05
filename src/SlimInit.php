@@ -409,7 +409,7 @@
 		protected function registerShutdownHandler() {
 			$serverRequestCreator = ServerRequestCreatorFactory::create();
 			$request = $serverRequestCreator->createServerRequestFromGlobals();
-			$shutdownHandler = new ShutdownHandler(Request::fromSlimRequest($request), $this->getDefaultExceptionHandler(), true, true, true);
+			$shutdownHandler = new ShutdownHandler(Request::fromSlimRequest($request), $this->getDefaultExceptionHandler(), false, true, true);
 
 			register_shutdown_function($shutdownHandler);
 		}
