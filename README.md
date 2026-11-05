@@ -14,6 +14,19 @@ Add this to `composer.json`:
 
 Make sure to merge your `require`-blocks!
 
+## PHP 8 compatibility branch
+
+This branch requires PHP 8.0+, PHP-DI 7.1+, Slim 4.15.3+ and Slim PSR-7 1.8+.
+Shutdown handling preserves responses after warnings, notices and deprecations;
+fatal errors still produce HTTP 500, without disclosing internal error details by default.
+Nonfatal PHP error logging is unchanged.
+
+PHP-DI 7 replaces PHPDoc injection annotations with PHP attributes. Applications using
+annotations must follow the [PHP-DI migration guide](https://php-di.org/doc/migration/7.0.html).
+The container's array access and dynamic properties remain available.
+
+Run the regression tests and source style check with `composer install` followed by `composer test`.
+
 ## Usage
 
 ### SlimInit

@@ -28,10 +28,17 @@
 			$this->logErrorDetails = $logErrorDetails;
 		}
 
+		public static function isFatal(?array $error): bool {
+			return $error !== null && in_array($error['type'] ?? null, [
+				E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR, E_RECOVERABLE_ERROR,
+			], true);
+		}
+
 		public function __invoke(): void {
 			$error = error_get_last();
 
-			if ($error !== null) {
+			// PHP logs nonfatal errors normally; they must not replace a valid response.
+			if (self::isFatal($error)) {
 				$file = $error['file'] ?? null;
 				$line = $error['line'] ?? null;
 				$type = $error['type'] ?? null;

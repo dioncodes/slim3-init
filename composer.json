@@ -11,19 +11,25 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4",
-		"slim/slim": "^4.9",
-		"php-di/php-di": "^6.3",
+		"php": ">=8.0",
+		"slim/slim": "^4.15.3",
+		"php-di/php-di": "^7.1",
 		"ext-mbstring": "*",
 		"ext-json": "*",
-		"slim/psr7": "^1.5"
+		"slim/psr7": "^1.8"
 	},
 	"require-dev": {
-		"squizlabs/php_codesniffer": "^2.5"
+		"phpunit/phpunit": "^9.6",
+		"squizlabs/php_codesniffer": "^3.13"
 	},
 	"autoload": {
 		"psr-4": {
 			"Adepto\\Slim3Init\\": "src"
+		}
+	},
+	"config": {
+		"platform": {
+			"php": "8.0.30"
 		}
 	},
 	"scripts": {
@@ -31,7 +37,7 @@
 			"@phpunit",
 			"@phpcs"
 		],
-		"phpunit": "php vendor/bin/phpunit",
-		"phpcs": "php vendor/bin/phpcs"
+		"phpunit": "php vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
+		"phpcs": "php vendor/bin/phpcs --standard=phpcs_disabled.xml"
 	}
 }

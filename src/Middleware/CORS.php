@@ -202,7 +202,7 @@
 			}
 
 			return $response->withHeader('Access-Control-Allow-Headers', implode(', ', $this->allowedHeaders))
-			                ->withHeader('Access-Control-Allow-Credentials', 'true')
+							->withHeader('Access-Control-Allow-Credentials', 'true')
 							->withHeader('Access-Control-Max-Age', $this->maxAge);
 		}
 
